@@ -10,11 +10,11 @@ public class Main {
         SharedResource resource2 = new SharedResource(lock);
 
         Thread th1 = new Thread(()->{
-            resource1.write();
+            resource1.read();
         });
 
         Thread th2 = new Thread(()->{
-            resource2.write();
+            resource2.read();
         });
 
         th1.start();
