@@ -22,14 +22,13 @@ class SharedResource {
         long stamp = lock.tryOptimisticRead();
         System.out.println("Optimistic read by :"+Thread.currentThread().getName());
         try {
-            a++;
             Thread.sleep(8000);
 
         }catch (Exception e){
             //
         }
         if(lock.validate(stamp)){
-            System.out.println("Read isAvailable inside read method :"+isAvailable+"and a updated to: "+a);
+            System.out.println("Read isAvailable inside read method :"+isAvailable+"and a read as: "+a);
             System.out.println("Lock released by :"+Thread.currentThread().getName());
         }else{
             this.a = 10;
